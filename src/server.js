@@ -18,4 +18,8 @@ app.get('/', (req, res) => {
   res.send('Hello express');
 });
 
+const jsonDataRoutes = require('./routes/v1/placeHolder');
+
+app.use('/json-data', jsonDataRoutes);
+
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
