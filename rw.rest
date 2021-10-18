@@ -1,1 +1,15 @@
 GET http://localhost:3000/json-data/albums
+
+###
+GET http://localhost:3000/strapi-posts
+
+###
+
+POST http://localhost:1337/posts
+Content-Type: application/json
+
+{
+  "title": "new post from api",
+  "author": "Jane Doe",
+  "likes": 10
+}

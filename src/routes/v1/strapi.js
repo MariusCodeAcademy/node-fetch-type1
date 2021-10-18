@@ -6,25 +6,20 @@ const fetch = (...args) =>
 
 const router = express.Router();
 
-const URL = 'https://jsonplaceholder.typicode.com';
-
-// GET /json-data/albums - get first 10 albums
-router.get('/albums', async (req, res) => {
-  // get all albums
-  const resp = await fetch(`${URL}/albums`);
-  const data = await resp.json();
-
-  // take first 10 albums
-  const first10 = data.slice(0, 10);
-
-  // return 10 albums
-  res.json({ msg: 'getting albums', first10 });
-});
-
-// GET /json-data/posts/upto/:count - get posts up to count
-///json-data/posts/upto/30 - get first 30 posts
+const URL = 'http://localhost:1337';
 
 // GET /strapi-posts/ - get all strapi created posts
+router.get('/', async (req, res) => {
+  // get all albums
+  try {
+    const resp = await fetch(`${URL}/posts`);
+    const data = await resp.json();
+    res.json({ msg: 'getting strapi posts', data });
+  } catch (error) {
+    console.log('error', error);
+    res.status(500);
+  }
+});
 
 // POST /strapi-posts/new - add new posts to strapti, add title, author, likes fields only
 

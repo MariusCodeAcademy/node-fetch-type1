@@ -19,7 +19,15 @@ app.get('/', (req, res) => {
 });
 
 const jsonDataRoutes = require('./routes/v1/placeHolder');
+const strapiRoutes = require('./routes/v1/strapi');
 
 app.use('/json-data', jsonDataRoutes);
+app.use('/strapi-posts', strapiRoutes);
+
+// app 404
+app.all('*', (req, res) => {
+  // address not found
+  res.status(404).json('Page not found 404');
+});
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
